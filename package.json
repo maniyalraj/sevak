@@ -1,0 +1,22 @@
+{
+  "name": "sevak",
+  "version": "1.0.0",
+  "description": "testapp",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "window": {
+    "toolbar": false,
+    "height": 1250,
+    "width": 1250
+  },
+  "author": "raj",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "angular-router": "0.0.2",
+    "bootstrap": "^3.3.7"
+  }
+}
