@@ -17,6 +17,7 @@
     "angular": "^1.6.1",
     "angular-route": "^1.6.1",
     "angular-router": "0.0.2",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
   }
 }
