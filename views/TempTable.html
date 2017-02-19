@@ -1,0 +1,76 @@
+<table class="table table-striped">
+		<thead>
+		<tr>
+			<th>ConstNo</th>
+			<th>PartNo</th>
+			<th>SrNoInPart</th>
+			<th>HouseNo</th>
+			<th>FullName</th>
+			<th>FullName_Unicode</th>
+			<th>SectionNo</th>
+			<th>Age</th>
+			<th>Sex</th>
+			<th>PhoneNo</th>
+			<th>EmailId</th>
+			<th>Voted</th>
+			<th>ColourNo</th>
+			<th>SurNameID</th>
+			<th>DubarQty</th>
+			<th>CastID</th>
+			<th>Status</th>
+			<th>UniqueVoterID</th>
+			<th>CardNo</th>
+			<th>OnlineUPDateStatus</th>
+			<th>IMPVoter</th>
+		</tr>
+		<tr>
+			<th><input type="text" ng-model="search.ConstNo"/></th>
+			<th><input type="text" ng-model="search.PartNo"/></th>
+			<th><input type="text" ng-model="search.SrNoInPart"/></th>
+			<th><input type="text" ng-model="search.HouseNo"/></th>
+			<th><input type="text" ng-model="search.FullName"/></th>
+			<th><input type="text" ng-model="search.FullName_Unicode"/></th>
+			<th><input type="text" ng-model="search.SectionNo"/></th>
+			<th><input type="text" ng-model="search.Age"/></th>
+			<th><input type="text" ng-model="search.Sex"/></th>
+			<th><input type="text" ng-model="search.PhoneNo"/></th>
+			<th><input type="text" ng-model="search.EmailId"/></th>
+			<th><input type="text" ng-model="search.Voted"/></th>
+			<th><input type="text" ng-model="search.ColourNo"/></th>
+			<th><input type="text" ng-model="search.SurNameID"/></th>
+			<th><input type="text" ng-model="search.DubarQty"/></th>
+			<th><input type="text" ng-model="search.CastID"/></th>
+			<th><input type="text" ng-model="search.Status"/></th>
+			<th><input type="text" ng-model="search.UniqueVoterID"/></th>
+			<th><input type="text" ng-model="search.CardNo"/></th>
+			<th><input type="text" ng-model="search.OnlineUPDateStatus"/></th>
+			<th><input type="text" ng-model="search.IMPVoter"/></th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in VoterListData | filter:search.FullName track by $index ">
+				<td>{{data.ConstNo}}</td>
+				<td>{{data.PartNo}}</td>
+				<td>{{data.SrNoInPart}}</td>
+				<td>{{data.HouseNo}}</td>
+				<td>{{data.FullName}}</td>
+				<td>{{data.FullName_Unicode}}</td>
+				<td>{{data.SectionNo}}</td>
+				<td>{{data.Age}}</td>
+				<td>{{data.Sex}}</td>
+				<td>{{data.PhoneNo}}</td>
+				<td>{{data.EmailId}}</td>
+				<td>{{data.Voted}}</td>
+				<td>{{data.ColourNo}}</td>
+				<td>{{data.SurNameID}}</td>
+				<td>{{data.DubarQty}}</td>
+				<td>{{data.CastID}}</td>
+				<td>{{data.Status}}</td>
+				<td>{{data.UniqueVoterID}}</td>
+				<td>{{data.CardNo}}</td>
+				<td>{{data.OnlineUPDateStatus}}</td>
+				<td>{{data.IMPVoter}}</td>
+
+			</tr>
+		</tbody>
+	</table>
