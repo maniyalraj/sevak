@@ -11,9 +11,16 @@
 		
 		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"></link>
 		
+		<style>
+		.wrapper{
+			margin:25% auto;
+		}
+		</style>
 	</head>
-	<body ng-app="sevak" >
+	<body ng-app="sevak">
+	<div class="row">
 		<div ng-include="'views/navigation.html'"></div>
-		<div class="ng-view row"></div>
+		<div class="ng-view"></div>
+	</div>
 	</body>
 </html>
