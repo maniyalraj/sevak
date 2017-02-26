@@ -18,6 +18,7 @@
     "angular-route": "^1.6.1",
     "angular-router": "0.0.2",
     "bootstrap": "^3.3.7",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "sql.js": "^0.4.0"
   }
 }

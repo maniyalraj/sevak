@@ -4,7 +4,19 @@ var filebuffer = fs.readFileSync('databasesElectiondatabase.db');
 
 var db = new sql.Database(filebuffer);
 
+var userProfile=process.env.USERPROFILE;
+if(!fs.existsSync(userProfile+'\\sevakData'))
+	{
+fs.mkdirSync(userProfile+'\\sevakData')
+	}
+var filePath=userProfile+'\\sevakData\\dataDump.json';
+var writeDataIntoFile = function (data)
+{
+	var JSONData=angular.toJson(data);
+	fs.writeFileSync(filePath,JSONData);
+}
 
+console.log(userProfile);
 
 var contents = db.exec("SELECT * FROM VoterList");
 
@@ -62,5 +74,7 @@ app.controller('sevakController',function($scope){
 			$scope.VoterListData.push(temp);
 		
 		}
+	writeDataIntoFile($scope.VoterListData);
+	
 	
 })
