@@ -78,7 +78,7 @@ app.controller('sevakController', function($scope, $http, databaseService) {
 
 	databaseService.getAllData(function(result) {
 		console.log(result);
-		$scope.VoterListData = result.data;
+		$scope.VoterListData = result;
 	});
 
 	databaseService.queryOnCondition('SectionNo=17', function(result) {
