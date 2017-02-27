@@ -4,18 +4,21 @@ var filebuffer = fs.readFileSync('databasesElectiondatabase.db');
 
 var db = new sql.Database(filebuffer);
 
+//File Operation and Directory Creation
 var userProfile = process.env.USERPROFILE;
+var filePath = userProfile + '\\sevakData\\dataDump.json';
+
 if (!fs.existsSync(userProfile + '\\sevakData')) {
 	fs.mkdirSync(userProfile + '\\sevakData')
 }
-var filePath = userProfile + '\\sevakData\\dataDump.json';
+
 var writeDataIntoFile = function(data) {
-	var JSONData = angular.toJson(data);
+	var JSONData = angular.toJson(data, true);
 	fs.writeFileSync(filePath, JSONData);
 }
 
 var appendDataToFile = function(data) {
-	var JSONData = angular.toJson(data);
+	var JSONData = angular.toJson(data, true);
 	fs.appendFile(filePath, JSONData);
 }
 
@@ -23,6 +26,7 @@ console.log(userProfile);
 
 var app = angular.module('sevak', [ 'ngRoute' ]);
 
+//Angular Routing
 app.config(function($routeProvider) {
 	$routeProvider.when("/", {
 		templateUrl : "views/home.html",
@@ -54,7 +58,8 @@ app.service('databaseService', function() {
 			cb(formatData(contents));
 		}
 	}
-
+	
+	//Format raw data into Json Object Array
 	var formatData = function(data) {
 		var resultArray = []
 		for (var i = 0; i < data[0].values.length; i++) {
@@ -73,44 +78,36 @@ app.service('databaseService', function() {
 
 	return databaseService;
 
-})
-app.controller('sevakController', function($scope, $http, databaseService) {
+});
 
+app.controller('sevakController', function($scope, $http, databaseService) {
+	
+	
+	//Fetch Data from .db file
 	databaseService.getAllData(function(result) {
 		console.log(result);
 		$scope.VoterListData = result;
 	});
-
+	
+	//Example query on conditional search
 	databaseService.queryOnCondition('SectionNo=17', function(result) {
 		console.log(result);
 
 	});
-
-	$scope.search = {
-		ConstNo : '',
-		PartNo : '',
-		SrNoInPart : '',
-		HouseNo : '',
-		FullName : '',
-		FullName_Unicode : '',
-		SectionNo : '',
-		Age : '',
-		Sex : '',
-		PhoneNo : '',
-		EmailId : '',
-		Voted : '',
-		ColourNo : '',
-		SurNameID : '',
-		DubarQty : '',
-		CastID : '',
-		Status : '',
-		UniqueVoterID : '',
-		CardNo : '',
-		OnlineUPDateStatus : '',
-		IMPVoter : ''
-
-	};
-
+	
+	var VoterDataKeys=Object.keys($scope.VoterListData[0]);
+	
+	//Declare Search Object 
+	$scope.search={};
+	
+	for(var i=0; i<VoterDataKeys.length; i++)
+		{
+			$scope.search[VoterDataKeys[i]]='';
+		}
+	
+	console.log($scope.search);
+	
+	//Write the VoterData to Local Json
 	writeDataIntoFile($scope.VoterListData);
 
 	console.log("Fetching from file");
@@ -122,4 +119,4 @@ app.controller('sevakController', function($scope, $http, databaseService) {
 
 	});
 
-})
+});
